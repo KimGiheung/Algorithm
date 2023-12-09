@@ -11,7 +11,7 @@
 3. **적합도 함수 정의:** 각 행렬의 적합도를 평가하는 함수를 정의합니다. 이 경우, 적합도는 행렬식의 크기로 정의될 수 있습니다. 행렬식이 클수록 해당 행렬의 적합도가 높다고 간주합니다.
     1. 적합도 함수는 행렬식을 활용한 공식을 적용. 아래와 같음
         
-        ![Untitled](%E1%84%8B%E1%85%B2%E1%84%8C%E1%85%A5%E1%86%AB%20%E1%84%8B%E1%85%A1%E1%86%AF%E1%84%80%E1%85%A9%E1%84%85%E1%85%B5%E1%84%8C%E1%85%B3%E1%86%B7%E1%84%8B%E1%85%B3%E1%86%AF%20%E1%84%92%E1%85%AA%E1%86%AF%E1%84%8B%E1%85%AD%E1%86%BC%E1%84%92%E1%85%A1%E1%86%AB%20%E1%84%92%E1%85%A2%E1%86%BC%E1%84%85%E1%85%A7%E1%86%AF%E1%84%89%E1%85%B5%E1%86%A8%20%E1%84%8E%E1%85%AC%E1%84%8C%E1%85%A5%E1%86%A8%E1%84%92%E1%85%AA%20%E1%84%87%E1%85%A1%20829b9ad53bc44b9ebec947687c212637/Untitled.png)
+        ![Find the maximum volume in a given matrix space using a genetic algorithm/img/Untitled.png](https://github.com/KimGiheung/Algorithm/blob/32e9c045252072c23723c69243835551b52c0056/Find%20the%20maximum%20volume%20in%20a%20given%20matrix%20space%20using%20a%20genetic%20algorithm/img/Untitled.png)
         
 4. **선택:** 적합도에 기반하여 행렬들을 선택합니다. 높은 적합도를 가진 행렬은 다음 세대에서 더 많이 대표될 확률이 높습니다.
 5. **교차:** 선택된 행렬들을 기반으로 새로운 행렬들을 생성하는 교차 과정을 수행합니다. 교차는 부모 행렬들의 원소들을 조합하여 새로운 자손 행렬을 만듭니다. 예를 들어, 한 행렬의 일부 행과 다른 행렬의 일부 행을 결합할 수 있습니다.
