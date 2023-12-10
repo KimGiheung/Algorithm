@@ -79,6 +79,7 @@ print(fitness_scores.shape)
 
 
 
+
 """# 4. 선택"""
 
 def select_parents(population, fitness_scores):
