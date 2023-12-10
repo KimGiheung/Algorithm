@@ -2,6 +2,7 @@
 
 import numpy as np
 import pandas as pd
+from time import perf_counter
 
 # 데이터 불러오기
 data = pd.read_csv('C:\\Users\\win\\Desktop\\kgh\\Algorithm_Project\\input.csv')
@@ -33,11 +34,11 @@ def initialize_population(pop_size, num_vectors):
     return np.array(population)
 
 # x와 y 좌표를 결합하여 2차원 인덱스 생성
-population = initialize_population(population_size, num_vectors)
-# print(population)
-population = population.reshape(100,4).tolist()
+# population = initialize_population(population_size, num_vectors)
+# # print(population)
+# population = population.reshape(100,4).tolist()
 
-# print(population)
+# # print(population)
 
 # 3. 적합도 함수 정의
 
@@ -71,7 +72,7 @@ def evaluate_population(population):
 
 
 
-fitness_scores = evaluate_population(population)
+# fitness_scores = evaluate_population(population)
 # print(len(fitness_scores))
 # print(fitness_scores.shape)
 # print(*fitness_scores, sep = '\n')
@@ -96,8 +97,8 @@ def select_parents(fitness_scores):
     parents = [fitness_scores[index] for index in selected_indices]
     return parents
 
-# 적합도 점수를 바탕으로 부모 선택
-parents = select_parents(fitness_scores)
+# # 적합도 점수를 바탕으로 부모 선택
+# parents = select_parents(fitness_scores)
 
 # 선택된 부모 출력
 # print(parents.shape)
@@ -130,8 +131,8 @@ def crossover(parents):
 
     return np.array(offspring)
 
-# 교차 함수 호출 및 자손 출력
-offspring = crossover(parents)
+# # 교차 함수 호출 및 자손 출력
+# offspring = crossover(parents)
 # print(offspring)
 
 # 6. 돌연변이
@@ -153,14 +154,27 @@ def mutation(offspring_crossover, mutation_rate, num_vectors, vector_length):
             offspring_crossover[idx, gene_idx] = random_value
     return offspring_crossover
 
-# 돌연변이 함수 호출
-mutated_offspring = mutation(offspring, mutation_rate, num_vectors, vector_length)
+# # 돌연변이 함수 호출
+# mutated_offspring = mutation(offspring, mutation_rate, num_vectors, vector_length)
 
 
 # print(mutated_offspring)
 
 # 7-9. 새로운 세대 생성 및 종료 조건 검사 및 결과 추출
+#실제 실행 부분
 
+start = perf_counter()
+# 개체(인구) 생성
+population = initialize_population(population_size, num_vectors)
+# print(population)
+population = population.reshape(100,4).tolist()
+fitness_scores = evaluate_population(population)
+# 적합도 점수를 바탕으로 부모 선택
+parents = select_parents(fitness_scores)
+# 교차 함수 호출 및 자손 출력
+offspring = crossover(parents)
+# # 돌연변이 함수 호출
+# mutated_offspring = mutation(offspring, mutation_rate, num_vectors, vector_length)
 
 best_fitness = 0
 best_index   = []
@@ -201,12 +215,13 @@ for generation in range(num_generations):
 
     # 새로운 개체군 생성
     population = mutated_offspring
+end = perf_counter()
 
 
 
 
 # 9. 결과 추출
 
-print(f"최대 적합도 = {best_fitness}, vectors의 인덱스 = {best_index}")
+print(f"최대 적합도 = {best_fitness}, vectors의 인덱스 = {best_index}, 실행 시간 = {(end-start)* 1e6:.5f}us")
 print("최대 적합도 행렬")
 print(vectors[best_index[0]:best_index[2], best_index[1]:best_index[3]])
