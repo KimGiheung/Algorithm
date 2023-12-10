@@ -30,7 +30,7 @@ print(vectors)
 
 def initialize_population(pop_size, num_vectors):
     # x 좌표를 0부터 19 사이에서 선택
-    x_indices = np.random.randint(0, num_vectors-1, size=(pop_size, num_vectors))
+    x_indices = np.random.randint(0, num_vectors, size=(pop_size, num_vectors)) # num_vectors-1 대신 num_vectors 사용
 
     # y 좌표를 0부터 9999 사이에서 선택
     y_indices = np.random.randint(0, vector_length-1, size=(pop_size, num_vectors))
@@ -40,8 +40,12 @@ def initialize_population(pop_size, num_vectors):
 
     return indices
 
-
+# x와 y 좌표를 결합하여 2차원 인덱스 생성
 population = initialize_population(population_size, num_vectors)
+
+for _ in range(99):
+    population = np.concatenate((population, initialize_population(population_size, num_vectors)), axis=0)
+population = population.reshape(100,100,20,2)
 print("population size: ", population.shape)
 print(population)
 
