@@ -30,7 +30,7 @@ print(vectors)
 
 def initialize_population(pop_size, num_vectors):
     # x 좌표를 0부터 19 사이에서 선택
-    x_indices = np.random.randint(0, num_vectors, size=(pop_size, num_vectors)) # num_vectors-1 대신 num_vectors 사용
+    x_indices = np.random.randint(0, num_vectors-1, size=(pop_size, num_vectors)) # num_vectors-1 대신 num_vectors 사용
 
     # y 좌표를 0부터 9999 사이에서 선택
     y_indices = np.random.randint(0, vector_length-1, size=(pop_size, num_vectors))
