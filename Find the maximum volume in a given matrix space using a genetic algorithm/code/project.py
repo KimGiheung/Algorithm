@@ -52,18 +52,27 @@ print(population)
 """# 3. 적합도 함수 정의
 
 """
-
 def fitness(matrix):
-    return np.abs(np.linalg.det(matrix))
+    matrix_product = np.dot(matrix, matrix.transpose())
+    return np.sqrt(np.abs(np.linalg.det(matrix_product))) # sqrt(|det(A^T * A)|)
 
-def evaluate_population(population, vectors):
+def evaluate_population(vectors):
     fitness_scores = []
-    for indices in population:
-        matrix = vectors[:, indices]
-        fitness_scores.append(fitness(matrix))
+    matrix = []
+    for mtx in population:
+      for individual in mtx:
+        # 각 개체의 인덱스를 사용하여 vectors에서 실제 값을 가져와 행렬을 생성
+        matrix.append([vectors[x, y] for x, y in individual])
+      matrix = np.array(matrix)
+      print(matrix.shape)
+      fitness_scores.append(fitness(matrix))
     return np.array(fitness_scores)
 
-fitness_scores = evaluate_population(population, vectors)
+
+
+fitness_scores = evaluate_population(vectors)
+print(fitness_scores.shape)
+
 
 """# 4. 선택"""
 
