@@ -13,7 +13,7 @@ import numpy as np
 import pandas as pd
 
 # 데이터 불러오기
-data = pd.read_csv('/content/drive/MyDrive/2023-2알고리즘/[Project] 주어진 행렬 공간 중에서 최대 volume 구하기/input.csv')
+data = pd.read_csv('C:\\Users\\win\\Desktop\\kgh\\Algorithm_Project\\input.csv')
 vectors = data.iloc[0:20].to_numpy()  # 첫 행은 인덱스, 나머지가 벡터 값
 
 # 초기 설정
@@ -68,15 +68,15 @@ def evaluate_population(population):
     # population (100, 100, 20, 2) 100개의 개체군이 각각(100x20) 행렬로 이루어져 있으며,
     # 각 개체군의 요소는 vectors의 index [x, y]쌍으로 가지고 있다.
     for individual in population:
-      print("individual: ", individual)
+        print("individual: ", individual)
 
-      # 각 개체군을 가져옴. mtx.shape = (100, 20, 20)
-      # 각 개체의 인덱스를 사용하여 vectors에서 실제 값을 가져와 행렬을 생성
-      matrix = np.array(vectors[individual[0]:individual[2], individual[1]:individual[3]])
-      print(matrix.shape)
+        # 각 개체군을 가져옴. mtx.shape = (100, 20, 20)
+        # 각 개체의 인덱스를 사용하여 vectors에서 실제 값을 가져와 행렬을 생성
+        matrix = np.array(vectors[individual[0]:individual[2], individual[1]:individual[3]])
+        print(matrix.shape)
 
-      # Volume 계산 결과와 indexing한 좌표를 저장함.
-      fitness_scores.append([fitness(matrix), individual])
+        # Volume 계산 결과와 indexing한 좌표를 저장함.
+        fitness_scores.append([fitness(matrix), individual])
     return np.array(fitness_scores)
 
 
