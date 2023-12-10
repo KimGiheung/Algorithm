@@ -52,14 +52,18 @@ print(population)
 """# 3. 적합도 함수 정의
 
 """
+# 3. 적합도 함수 정의
 def fitness(matrix):
     matrix_product = np.dot(matrix, matrix.transpose())
     return np.sqrt(np.abs(np.linalg.det(matrix_product))) # sqrt(|det(A^T * A)|)
 
 def evaluate_population(vectors):
     fitness_scores = []
-    matrix = []
+    # population (100, 100, 20, 2) 100개의 개체군이 각각(100x20) 행렬로 이루어져 있으며,
+    # 각 개체군의 요소는 vectors의 index [x, y]쌍으로 가지고 있다.
     for mtx in population:
+      # 각 개체군을 가져옴. mtx.shape = (100, 20, 20)
+      matrix = []
       for individual in mtx:
         # 각 개체의 인덱스를 사용하여 vectors에서 실제 값을 가져와 행렬을 생성
         matrix.append([vectors[x, y] for x, y in individual])
@@ -72,6 +76,7 @@ def evaluate_population(vectors):
 
 fitness_scores = evaluate_population(vectors)
 print(fitness_scores.shape)
+
 
 
 """# 4. 선택"""
