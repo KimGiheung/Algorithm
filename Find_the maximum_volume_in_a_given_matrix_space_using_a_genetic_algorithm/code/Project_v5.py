@@ -34,7 +34,7 @@ def initialize_population(pop_size, num_vectors):
 
 # x와 y 좌표를 결합하여 2차원 인덱스 생성
 population = initialize_population(population_size, num_vectors)
-print(population)
+# print(population)
 population = population.reshape(100,4).tolist()
 
 # print(population)
@@ -66,15 +66,15 @@ def evaluate_population(population):
 
         # Volume 계산 결과와 indexing한 좌표를 저장함.
         fitness_scores.append([fitness(matrix), individual])
-    print(fitness_scores)
+    # print(fitness_scores)
     return fitness_scores
 
 
 
 fitness_scores = evaluate_population(population)
-print(len(fitness_scores))
+# print(len(fitness_scores))
 # print(fitness_scores.shape)
-print(*fitness_scores, sep = '\n')
+# print(*fitness_scores, sep = '\n')
 
 
 
@@ -101,7 +101,7 @@ parents = select_parents(fitness_scores)
 
 # 선택된 부모 출력
 # print(parents.shape)
-print(parents)
+# print(parents)
 
 # 5. 교차
 
@@ -132,7 +132,7 @@ def crossover(parents):
 
 # 교차 함수 호출 및 자손 출력
 offspring = crossover(parents)
-print(offspring)
+# print(offspring)
 
 # 6. 돌연변이
 
@@ -157,14 +157,14 @@ def mutation(offspring_crossover, mutation_rate, num_vectors, vector_length):
 mutated_offspring = mutation(offspring, mutation_rate, num_vectors, vector_length)
 
 
-print(mutated_offspring)
+# print(mutated_offspring)
 
 # 7-9. 새로운 세대 생성 및 종료 조건 검사 및 결과 추출
 
 
 best_fitness = 0
 best_index   = []
-fitness_threshold = 796727301049202.6  # 최대 적합도 종료 임계값
+fitness_threshold = 3.9471414633881875e+34  # 최대 적합도 종료 임계값
 # num_generations = 100
 for generation in range(num_generations):
     # 돌연변이 함수 호출
@@ -207,6 +207,6 @@ for generation in range(num_generations):
 
 # 9. 결과 추출
 
-print(f"최대 적합도 = {best_fitness}, 벡터 인덱스 = {best_index}")
+print(f"최대 적합도 = {best_fitness}, vectors의 인덱스 = {best_index}")
 print("최대 적합도 행렬")
 print(vectors[best_index[0]:best_index[2], best_index[1]:best_index[3]])
