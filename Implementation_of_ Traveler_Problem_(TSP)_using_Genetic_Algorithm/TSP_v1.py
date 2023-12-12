@@ -37,6 +37,9 @@ def cycle_crossover_optimized(parent1, parent2):
     cycle_elements = set()
     index = 0
     while None in child:
+        
+        # print(f"parent1[{index}]: {parent1[index]}")
+
         if parent1[index] not in cycle_elements:
             cycle_elements.add(parent1[index])
             child[index] = parent1[index]
@@ -98,8 +101,10 @@ for generation in range(num_generations):
 
         # 변이
         child = mutate(child, mutation_rate)
-
+        # print(child)
+        # print("mutation_rate: ", mutation_rate)
         new_population.append(child)
+        # print(new_population)
 
         # 최적 해결책 업데이트
         child_fitness = fitness(child)
